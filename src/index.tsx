@@ -1,19 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { createRoot } from "react-dom/client"
+import { App, SuperApp } from "./App"
+// 1. Находим корневой HTML-элемент на странице.
+// В стандартном файле public/index.html обычно есть пустой <div> с id="root".
+// Именно в этот div React будет "встраивать" всё наше приложение.
+// Мы используем Type Assertion (as HTMLElement), чтобы подсказать TypeScript,
+// что мы уверены, что элемент с id="root" существует и является HTML-элементом.
+const rootContainer = document.getElementById('root') as HTMLElement
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// 2. Создаем "корень" React-приложения.
+// С помощью createRoot() мы говорим React, что rootContainer
+// будет контейнером для нашего приложения.
+const root = createRoot(rootContainer)
+
+// root.render(App())
+root.render(<SuperApp></SuperApp>)
