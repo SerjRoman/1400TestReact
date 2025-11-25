@@ -1,0 +1,32 @@
+.product {
+    width: 200px;
+    height: 255px;
+    border-radius: 16px;
+    padding: 10px 0;
+    gap: 3px;
+    background-color: #FFD9B3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.amountBlock {
+    display: flex;
+    gap: 10px;
+}
+.amountBlock button {
+    border: 2px black solid;
+    border-radius: 2px;
+    width: 24px;
+    height: 24px;
+    background: none;
+    font-size: 22px;
+}
+.productImage {
+    width: 140px;
+    height: 130px;
+    border-radius: 16px;
+}
+.price {
+    color: #98503D;
+}

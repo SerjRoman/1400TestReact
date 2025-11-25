@@ -3,9 +3,8 @@
 // number, string, array из ReactNode, HTML теги. 
 // Однако boolean, null, undefined - являются реактовскими узлами, но ничего не рендерят
 // 
-
 import { ProductList } from "./ProductList";
-
+import styles from './app.module.css'
 // export function App() {
 //     const element = <h1>Hello from JS variable</h1>
 //     const users = true
@@ -92,8 +91,14 @@ import { ProductList } from "./ProductList";
 //     </div>
 // }
 
+// export function App() {
+//     return <div>
+//         <ProductList></ProductList>
+//     </div>
+// }
 export function App() {
-    return <div>
+    
+    return <div className={styles.products}>
         <ProductList></ProductList>
     </div>
 }
