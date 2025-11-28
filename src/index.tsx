@@ -13,5 +13,6 @@ const rootContainer = document.getElementById('root') as HTMLElement
 // будет контейнером для нашего приложения.
 const root = createRoot(rootContainer)
 
+
 // root.render(App())
 root.render(<App></App>)

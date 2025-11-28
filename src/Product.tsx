@@ -33,5 +33,6 @@ export function Product(props: ProductProps) {
             <button onClick={incrementProduct}>+</button>
             <button onClick={decrementProduct}>-</button>
         </div>
+        <button>Buy</button>
     </div>
 }
