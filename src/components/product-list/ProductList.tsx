@@ -1,4 +1,4 @@
-import { Product } from "./Product"
+import { ProductCard } from "../product-card/ProductCard"
 
 export function ProductList() {
     const products = [
@@ -8,10 +8,10 @@ export function ProductList() {
         ]
     return <div>
         {products.map( product => 
-            <Product 
+            <ProductCard 
                 title={product.title} 
                 price={product.price}
                 image={product.image}
-            ></Product>)}
+            ></ProductCard>)}
     </div>
 }

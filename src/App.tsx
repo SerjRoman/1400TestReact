@@ -3,8 +3,11 @@
 // number, string, array из ReactNode, HTML теги. 
 // Однако boolean, null, undefined - являются реактовскими узлами, но ничего не рендерят
 // 
-import { ProductList } from "./ProductList";
 import styles from './app.module.css'
+import { Footer } from "./components/footer/Footer";
+import { Header } from './components/header/Header';
+import { Main } from './components/main/Main';
+import { ProductList } from './components/product-list/ProductList';
 // export function App() {
 //     const element = <h1>Hello from JS variable</h1>
 //     const users = true
@@ -98,7 +101,18 @@ import styles from './app.module.css'
 // }
 export function App() {
     
-    return <div className={styles.products}>
-        <ProductList></ProductList>
+    return <div className={styles.app}>
+        <Header></Header>
+        <Main>
+            <div></div>
+            <p></p>
+            <span></span>
+            <ProductList></ProductList>
+        </Main>
+        <Main>
+            <div></div>
+        </Main>
+        <Main></Main>
+        <Footer></Footer>
     </div>
 }

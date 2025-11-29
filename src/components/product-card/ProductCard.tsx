@@ -1,16 +1,15 @@
 import { useState } from "react"
-import styles from './product.module.css'
+import styles from './product-card.module.css'
 
-interface ProductProps {
+interface ProductCardProps {
     title: string,
     price: number,
     image: string
 }
 
-export function Product(props: ProductProps) {
+export function ProductCard(props: ProductCardProps) {
     const {title, price, image} = props
     const [count, setCount] = useState<number>(1)
-
     function incrementProduct(){
         if (count > 100){
             return

@@ -1,0 +1,28 @@
+.footer {
+    display: flex;
+    align-items: center;
+
+    height: 75px;
+
+    gap: 10px;
+
+}
+.logoBlock{ 
+    display: flex;
+
+    gap: 10px;
+}
+
+.logoImage {
+    width: 50px;
+    height: 50px;
+}
+
+.textBlock {
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: center;
+
+    font-size: 12px;
+}
