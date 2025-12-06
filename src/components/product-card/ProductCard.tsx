@@ -10,6 +10,8 @@ interface ProductCardProps {
 export function ProductCard(props: ProductCardProps) {
     const {title, price, image} = props
     const [count, setCount] = useState<number>(1)
+
+
     function incrementProduct(){
         if (count > 100){
             return
@@ -17,11 +19,13 @@ export function ProductCard(props: ProductCardProps) {
         setCount(count + 1)
     }
     function decrementProduct(){
+
         if (count <= 1){
             return
         }
         setCount(count - 1)
     }
+
 
     return <div className={styles.product}>
         <img className={styles.productImage} src={image} alt="cat"/>
