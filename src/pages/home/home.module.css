@@ -1,0 +1,47 @@
+.page{
+    display: flex;
+    flex: 1;
+    padding-top: 10px ;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    
+
+}
+
+.title{
+    font-size: 46px;
+}
+.content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+    column-gap:10px;
+}
+.textBlock{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+.titleTextBlock{
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.description{
+    font-size: 26px;
+}
+.imageBlock{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 85px;
+    padding-left: 85px;
+    gap: 10px;
+}
+.homeImage{
+    width: 600px;
+    height: 600px;
+    border-radius: 16px;
+}

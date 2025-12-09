@@ -18,7 +18,7 @@ const categories = [
 export function ProductList() {
     const [searchValue, setSearchValue] = useState<string>("")
     const [filteredProducts, setFilteredProducts] = useState(products)
-    const [selectedCategory, setSelectedCategory] = useState<string>("All")
+    const [selectedCategory, setSelectedCategory] = useState<"All" | number>("All")
 
     useEffect( () => {
         const foundProducts = products.filter( product => {
@@ -48,18 +48,29 @@ export function ProductList() {
                 <SearchIcon className={styles.searchIcon}></SearchIcon>
             </div>
             <div className={styles.selectCategories}>
-                <select onChange={event => {
-                    setSelectedCategory(event.target.value)
-                }}>
-                    <option value="All">All</option>
-                    {categories.map( category => 
-                        <option 
-                            key={category.id} 
-                            value={category.id}
-                        >{category.name}
-                        </option>
-                    )}
-                </select>
+                
+                <label><input
+                    value={"All"}
+                    type="radio"
+                    onChange={event => {setSelectedCategory("All")}}
+                    checked={selectedCategory === "All"}
+                    />
+                    All
+                </label>
+                {categories.map((category) => {
+                    return (
+                        <label key={category.id} className={styles.selectedCategory} >
+                            <input
+                                type="radio"
+                                onChange={event => {
+                                    setSelectedCategory(category.id)
+                                }}
+                                checked={selectedCategory === category.id}
+                                />
+                            {category.name}
+                        </label>
+                    )
+                })}
             </div>
         </div>
         <div className={styles.content}>

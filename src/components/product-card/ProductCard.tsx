@@ -11,7 +11,6 @@ export function ProductCard(props: ProductCardProps) {
     const {title, price, image} = props
     const [count, setCount] = useState<number>(1)
 
-
     function incrementProduct(){
         if (count > 100){
             return

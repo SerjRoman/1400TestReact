@@ -1,9 +1,6 @@
 .productList {
-
     display: grid;
-
     grid-template-columns: minmax(250px, 1fr) 3fr;
-
 }
 .filtersBlock {
     display: flex;
@@ -38,4 +35,13 @@
 }
 .searchIcon {
     fill: none
+}
+.selectCategories {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.selectCategories label {
+    display: flex;
+    gap: 5px;
 }

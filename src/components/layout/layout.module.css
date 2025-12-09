@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    background-color: #FAF0E6;
+}
+
+.container {
+    padding: 20px;
+    gap:20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
