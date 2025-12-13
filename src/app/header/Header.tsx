@@ -1,8 +1,5 @@
+import { ICONS, IMAGES } from '../../shared'
 import styles from './header.module.css'
-import logoImage from '../../assets/images/logo.png'
-import searchSvg, { ReactComponent as SearchIcon } from '../../assets/svg/search.svg'
-import menuSvg, { ReactComponent as MenuIcon } from '../../assets/svg/menu.svg'
-import defaultAvatar from '../../assets/images/defaultAvatar.png'
 import { Link, useNavigate } from 'react-router-dom'
 
 export function Header() {
@@ -10,27 +7,27 @@ export function Header() {
 
     return <header>
         <Link to={"/"} className={styles[`logo-block`]}>
-            <img src={logoImage} alt="logo" className={styles.logoImage} />
+            <img src={IMAGES.logo} alt="logo" className={styles.logoImage} />
         </Link>
         <div className={styles.actionsBlock}>
             <button onClick={() => {
                 navigate('/products')
             }} className={styles.menuButton}>
-                <MenuIcon className={styles.menuIcon}></MenuIcon>
+                <ICONS.Menu className={styles.menuIcon}></ICONS.Menu>
                 Categories
             </button>
             <div className={styles.searchBar}>
                 <input type="text" placeholder="Find products"/>
-                <SearchIcon className={styles.searchIcon}></SearchIcon>
+                <ICONS.Search className={styles.searchIcon}></ICONS.Search>
             </div>
             <Link to={"#"} className={styles.menuButton}>
-                <MenuIcon className={styles.menuIcon}></MenuIcon>
+                <ICONS.Menu className={styles.menuIcon}></ICONS.Menu>
                 Cart
             </Link>
         </div>
         <div className={styles.profileBlock}>
             <p>Username</p>
-            <img src={defaultAvatar} alt="avatar" />
+            <img src={IMAGES.defaultAvatar} alt="avatar" />
         </div>
     </header>
 }

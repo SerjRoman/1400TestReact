@@ -1,6 +1,7 @@
-import { ProductCard } from "../product-card/ProductCard"
+import { ICONS } from "../../shared";
+import { ProductCard } from "./product-card/ProductCard"
 import styles from './product-list.module.css';
-import { ReactComponent as SearchIcon } from '../../assets/svg/search.svg'
+
 import { useEffect, useState } from "react";
 
 const products = [
@@ -45,7 +46,7 @@ export function ProductList() {
                     }} 
                     type="text"
                     placeholder="Find products" />
-                <SearchIcon className={styles.searchIcon}></SearchIcon>
+                <ICONS.Search className={styles.searchIcon}></ICONS.Search>
             </div>
             <div className={styles.selectCategories}>
                 

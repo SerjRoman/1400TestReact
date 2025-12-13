@@ -1,5 +1,6 @@
 import styles from './home.module.css';
 import homeImage from '../../assets/images/home.png';
+import { IMAGES } from '../../shared';
 
 export function HomePage() {
     return <div className={styles.page}>
@@ -26,7 +27,7 @@ export function HomePage() {
                 </span>
             </div>
             <div className={styles.imageBlock}>
-                <img src={homeImage} alt='homeImage' className={styles.homeImage}/>
+                <img src={IMAGES.home} alt='homeImage' className={styles.homeImage}/>
             </div>
         </div>
     </div>

@@ -1,11 +1,6 @@
 import { useState } from "react"
 import styles from './product-card.module.css'
-
-interface ProductCardProps {
-    title: string,
-    price: number,
-    image: string
-}
+import { ProductCardProps } from "./product-card.types"
 
 export function ProductCard(props: ProductCardProps) {
     const {title, price, image} = props
