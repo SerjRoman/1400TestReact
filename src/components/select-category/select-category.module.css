@@ -1,0 +1,10 @@
+
+.selectCategories {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.selectCategories label {
+    display: flex;
+    gap: 5px;
+}

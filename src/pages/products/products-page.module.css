@@ -1,0 +1,32 @@
+.productPage {
+    display: grid;
+    grid-template-columns: minmax(250px, 1fr) 3fr;
+}
+.filtersBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px
+}
+
+.searchBar {
+    display: flex;
+
+    width: 100%;
+    border-radius: 16px;
+    padding: 0 10px;
+    background-color: #EBE7E7;
+
+    gap: 10px
+}
+
+.searchBar input {
+    flex: 1;
+
+    background: none;
+
+    border: none;
+}
+.searchIcon {
+    fill: none
+}
