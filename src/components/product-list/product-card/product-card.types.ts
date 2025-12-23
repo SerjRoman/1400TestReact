@@ -1,5 +1,5 @@
+import { Product } from "../../../shared/types";
+
 export interface ProductCardProps {
-    title: string,
-    price: number,
-    image: string
+    product: Product
 }

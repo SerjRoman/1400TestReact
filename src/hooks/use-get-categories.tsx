@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import { Category } from "../shared/types"
+import { API_URL } from "../shared/api"
 
-interface UseGetCategories {
+interface UseGetCategoriesContract {
     isLoading: boolean
     categories: Category[]
     error: string | null
 }
 
-export function useGetCategories(): UseGetCategories{
+export function useGetCategories(): UseGetCategoriesContract{
     const [categories, setCategories] = useState<Category[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [error, setError] = useState<string | null>(null)
@@ -19,7 +20,7 @@ export function useGetCategories(): UseGetCategories{
             // конфигурация запроса(метод, заголовки...)
             try {
                 setIsLoading(true)
-                const response = await fetch("http://localhost:8001/categories", {
+                const response = await fetch(`${API_URL}/categories`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json"

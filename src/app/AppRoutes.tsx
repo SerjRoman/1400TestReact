@@ -1,15 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HomePage } from "../pages/home/HomePage";
-import { ProductsPage } from "../pages/products/ProductsPage";
+import {HomePage, NotFoundPage, ProductPage, ProductsPage} from '../pages'
 import { Layout } from "./layout";
+
 
 
 export function AppRoutes() {
     return <BrowserRouter>
         <Routes>
             <Route path="/" element={<Layout />}>
-            <Route path="/" element={<HomePage />}></Route>
-            <Route path="/products" element={<ProductsPage />}></Route>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/products/:id" element={<ProductPage />} />
+
+                <Route path="/*" element={<NotFoundPage />} />
             </Route>
         </Routes>
     </BrowserRouter>
