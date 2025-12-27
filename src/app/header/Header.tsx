@@ -1,3 +1,4 @@
+import { SearchBar } from '../../components'
 import { ICONS, IMAGES } from '../../shared'
 import styles from './header.module.css'
 import { Link, useNavigate } from 'react-router-dom'
@@ -16,10 +17,8 @@ export function Header() {
                 <ICONS.Menu className={styles.menuIcon}></ICONS.Menu>
                 Categories
             </button>
-            <div className={styles.searchBar}>
-                <input type="text" placeholder="Find products"/>
-                <ICONS.Search className={styles.searchIcon}></ICONS.Search>
-            </div>
+            <SearchBar/>
+            
             <Link to={"#"} className={styles.menuButton}>
                 <ICONS.Menu className={styles.menuIcon}></ICONS.Menu>
                 Cart
