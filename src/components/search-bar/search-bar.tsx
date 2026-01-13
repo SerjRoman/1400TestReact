@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { ICONS } from "../../shared";
+import { useEffect, useRef, useState } from "react";
+import { ICONS, Modal } from "../../shared";
 import styles from './search-bar.module.css'
 import { useGetProducts } from "../../hooks";
 import { Link } from "react-router-dom";
@@ -18,7 +18,12 @@ export function SearchBar() {
 
     const isContent: boolean = !isLoading && !error
 
-    return <div className={styles.searchBar}>
+    const containerRef = useRef<HTMLDivElement>(null)
+
+    return <div 
+        className={styles.searchBar} 
+        onClick={ (event) => { event.stopPropagation() }} 
+        ref={containerRef}>
         <input
             type="text" 
             placeholder="Find products" 
@@ -28,16 +33,20 @@ export function SearchBar() {
             value={searchValue}
         />
         <ICONS.Search className={styles.searchIcon}></ICONS.Search>
-        {isOpen && <div>
-            {/* {isLoading ? <div>Loading...</div> : error ? <div>Error {error}</div> : filteredProducts.map( product => 
-                <Link to={`/products/${product.id}`}></Link>
-            )} */}
-            
-            {isContent && filteredProducts.map( product => 
-                <Link to={`/products/${product.id}`}></Link>
-            )}
-            {isLoading && <div>Loading..</div>}
-            {error && <div>Error {error}</div>}
-        </div>}
+        {isOpen && <Modal 
+                isOpen={isOpen} 
+                onClose={() => setIsOpen(false)} 
+                doCloseOnClickOutside 
+                className={styles.searchBarModal}
+                container={containerRef.current ?? document.body}
+                >
+            <div>
+                {isContent && filteredProducts.map( product => 
+                    <Link to={`/products/${product.id}`}></Link>
+                )}
+                {isLoading && <div>Loading..</div>}
+                {error && <div>Error {error}</div>}
+            </div>
+            </Modal>}
     </div>
 }

@@ -25,3 +25,8 @@
     border: none;
     background-color: #EBE7E7;
 }
+
+.searchBarModal {
+    top: 0;
+    left: 0;
+}
