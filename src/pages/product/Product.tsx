@@ -1,6 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useGetProductById } from "../../hooks"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
+import { CartContext } from "../../context"
 
 export function ProductPage() {
     const {id} = useParams<{id: string}>() // 1 | 10 | "dasdsadas"
@@ -8,6 +9,7 @@ export function ProductPage() {
     const currentId = Number(id)
     const {product, isLoading, error} = useGetProductById({id: currentId})
     const navigate = useNavigate()
+    const cartCtx = useContext(CartContext)
 
     useEffect( () => {
         if (isNaN(currentId)) {
@@ -38,7 +40,9 @@ export function ProductPage() {
                 {/* <p>{product.description}</p> */}
                 <p>Price: {product.price}</p>
                 <div>
-                    <button>Add to cart</button>
+                    <button onClick={() => {
+                        cartCtx?.addToCart(product)
+                    }}>Add to cart</button>
                     <button>Buy</button>
                 </div>
             </div>
