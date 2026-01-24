@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 import { Product } from "../shared/types";
 
 interface CartItem extends Product {
@@ -14,7 +14,7 @@ interface CartContextContract {
     decrementCount: (id: number) => void
 }
 
-export const CartContext = createContext<CartContextContract | null>(null)
+const CartContext = createContext<CartContextContract | null>(null)
 
 
 export function CartContextProvider({children}: {children: ReactNode}) {
@@ -22,6 +22,13 @@ export function CartContextProvider({children}: {children: ReactNode}) {
 
     // Если товара нету в корзине - добавляем его в массив items и даем ему count = 1
     // Если товар ЕСТЬ в корзине - увеличиваем его count на 1 count++
+    function addToCart(product: Product) {
+        if (isInCart(product.id)) return
+
+        const newItems = [...items, {...product, count: 1}]
+        setItems(newItems)
+    }
+    /*
     function addToCart(product: Product) {
         const foundProduct = items.find(cartItem => cartItem.id === product.id)
         if (foundProduct) {
@@ -34,6 +41,7 @@ export function CartContextProvider({children}: {children: ReactNode}) {
             setItems(newItems)
         }
     }
+    */
     function removeFromCart(id: number) {
         const newItems = items.filter(item => item.id !== id)
         // item.id=1, id = 3 -> true
@@ -43,8 +51,7 @@ export function CartContextProvider({children}: {children: ReactNode}) {
     }
 
     function isInCart(id: number): boolean {
-        const foundProduct = items.find(cartItem => cartItem.id === id)
-        return !!foundProduct
+        return items.some(cartItem => cartItem.id === id)
     }
     function incrementCount(id: number) {
         if (!isInCart(id)) return
@@ -60,8 +67,17 @@ export function CartContextProvider({children}: {children: ReactNode}) {
         setItems(newItems)
     }
     function decrementCount(id: number) {
-        const foundProduct = items.find(cartItem => cartItem.id === id)
-        if (!foundProduct) return
+        if (!isInCart(id)) return
+        const newItems = items.map(cartItem => {
+            if (cartItem.id === id) {
+                return {
+                    ...cartItem,
+                    count: cartItem.count - 1
+                }
+            }
+            return cartItem
+        })
+        setItems(newItems)
         
     }
     return <CartContext value={{
@@ -75,4 +91,11 @@ export function CartContextProvider({children}: {children: ReactNode}) {
     }}>
         {children}
     </CartContext>
+}
+// 
+export function useCartContext() {
+    const cartContext = useContext(CartContext)
+    if (!cartContext) throw new Error("Provider must wrap your app component")
+    
+    return cartContext
 }
