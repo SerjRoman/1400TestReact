@@ -1,0 +1,12 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    overflow-y: scroll;
+    width: 100%;
+    flex: 1;
+}
+.content::-webkit-scrollbar {
+    display: none;
+}

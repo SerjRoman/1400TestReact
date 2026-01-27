@@ -1,0 +1,32 @@
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    font-family: 'Inter', Arial;
+    flex: 1;
+}
+.page h1 {
+    font-weight: 500;
+    font-size: 48px;
+}
+.total {
+    font-weight: bold;
+    font-size: 48px;
+}
+.bottom {
+    font-size: 24px;
+}
+.delete {
+    color: #C80B0B;
+}
+.bottom {
+    display: flex;
+    flex-direction: row;
+    justify-items: left;
+    gap: 50px;
+    width: 100%;
+    padding: 10px;
+    align-items: center;
+}

@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {HomePage, NotFoundPage, ProductPage, ProductsPage} from '../pages'
+import {CartPage, HomePage, NotFoundPage, ProductPage, ProductsPage} from '../pages'
 import { Layout } from "./layout";
 
 
@@ -11,6 +11,7 @@ export function AppRoutes() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/products" element={<ProductsPage />} />
                 <Route path="/products/:id" element={<ProductPage />} />
+                <Route path="/cart" element={<CartPage />} />
 
                 <Route path="/*" element={<NotFoundPage />} />
             </Route>

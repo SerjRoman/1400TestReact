@@ -9,6 +9,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    position: relative;
 }
 .amountBlock {
     display: flex;
@@ -21,6 +23,8 @@
     height: 24px;
     background: none;
     font-size: 22px;
+    cursor: pointer;
+
 }
 .productImage {
     width: 140px;
@@ -29,4 +33,19 @@
 }
 .price {
     color: #98503D;
+}
+/*  */
+.moreButton {
+    width: 100px;
+    height: 30px;
+
+    background-color: #FAF0E6;
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
 }

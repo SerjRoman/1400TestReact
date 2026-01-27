@@ -1,10 +1,12 @@
 import { useState } from "react"
 import styles from './product-card.module.css'
 import { ProductCardProps } from "./product-card.types"
+import { useNavigate } from "react-router-dom"
 
 export function ProductCard(props: ProductCardProps) {
     const {product} = props
     const [count, setCount] = useState<number>(1)
+    const navigate = useNavigate()
 
     function incrementProduct(){
         if (count > 100){
@@ -29,5 +31,6 @@ export function ProductCard(props: ProductCardProps) {
             <button onClick={incrementProduct}>+</button>
             <button onClick={decrementProduct}>-</button>
         </div>
+        <button className={styles.moreButton} onClick={()=> navigate(`/products/${product.id}`)}>More</button>
     </div>
 }

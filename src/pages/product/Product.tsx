@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { useGetProductById } from "../../hooks"
 import { useContext, useEffect } from "react"
 import { useCartContext } from "../../context"
+import { Button } from "../../shared/button"
 
 export function ProductPage() {
     const {id} = useParams<{id: string}>() // 1 | 10 | "dasdsadas"
@@ -40,7 +41,7 @@ export function ProductPage() {
                 {/* <p>{product.description}</p> */}
                 <p>Price: {product.price}</p>
                 <div>
-                    <button onClick={() => {
+                    <Button onClick={() => {
                         const isIn = isInCart(product.id)
                         if (!isIn) {
                             addToCart(product)
@@ -48,8 +49,8 @@ export function ProductPage() {
                             incrementCount(product.id)
                         }
 
-                    }}>Add to cart</button>
-                    <button>Buy</button>
+                    }}>Add to cart</Button>
+                    <Button>Buy</Button>
                 </div>
             </div>
         </div>

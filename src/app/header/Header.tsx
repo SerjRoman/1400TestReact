@@ -19,7 +19,7 @@ export function Header() {
             </button>
             <SearchBar/>
             
-            <Link to={"#"} className={styles.menuButton}>
+            <Link to={"/cart"} className={styles.menuButton}>
                 <ICONS.Menu className={styles.menuIcon}></ICONS.Menu>
                 Cart
             </Link>
