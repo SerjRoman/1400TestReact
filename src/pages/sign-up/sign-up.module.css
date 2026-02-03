@@ -6,7 +6,7 @@
     flex: 1;
     width: 100%;
 }
-.signInForm{
+.signUpForm{
     display: flex;
     flex-direction: column;
     gap: 40px;

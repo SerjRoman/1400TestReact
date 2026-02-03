@@ -8,6 +8,7 @@
     align-items: center;
     flex-direction: column;
     background-color: #FAF0E6;
+    font-size: 24px;
 }
 .primary:hover{
     background-color: #FFD9B3;
@@ -21,4 +22,14 @@
 }.secondary:active{
     border: 1px solid #FFBF80;
     background-color: #fff;
+}
+.submit{
+    background-color: #EBE7E7;
+}
+.submit:hover{
+    background-color: #C6BBBB;
+}
+.submit:active{
+    background-color: #FFF;
+    border: 1px solid #000000;
 }
