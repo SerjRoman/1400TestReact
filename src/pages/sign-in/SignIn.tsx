@@ -3,36 +3,29 @@ import { SignInFormState } from "./sign-in.types"
 import { IMAGES, Button } from "../../shared"
 import styles from "./sign-in.module.css"
 import { Link } from "react-router-dom"
-import { API_URL } from "../../shared/api"
+import { useLogin } from "../../hooks"
+import { useEffect } from "react"
+import { useUserContext } from "../../context"
 export function SignInPage() {
     // Generic - общий/универсальный
     const {register, handleSubmit, formState, setError} = useForm<SignInFormState>()
-    
+    const [login, {isLoading, error}] = useLogin()
+    const {setToken} = useUserContext()
 
     async function onSignInSubmit(data: SignInFormState) {
         console.log("Form was submitted")
-        try {
-            const request = await fetch(
-                `${API_URL}/users/login`,
-                {
-                    method: "POST",
-                    body: JSON.stringify(data),
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                }
-            )
-            // c = s
-            const responseData = await request.json()
-            if (request.status === 401) {
-                setError("root", {message: "Wrong credentials"})
-                return
-            }
-            console.log(responseData, request.status)
-        } catch (error) {
-            console.error("ERROR:", error)
+        const responseData = await login(data)
+        if ("error" in responseData && responseData.error) {
+            setError('root', {message: error ?? "Server Errror"})
+        } else if ("token" in responseData) {
+            setToken(responseData.token)
+            localStorage.setItem('token', responseData.token)
         }
     }
+    useEffect( () => {
+        if (!error) return
+        setError('root', {message: error})
+    } , [error])
 
 
     const emailError = formState.errors.email
@@ -79,8 +72,8 @@ export function SignInPage() {
                     <p className={styles.error}>{passwordError?.message}</p>
                 </label>
             </div>
-            <p className={styles.additionalInfo}>Don’t have an account? <Link className={styles.additionalInfoLink} to={"/sign-up"}>Register now!</Link></p>
-            <Button type="submit" variant="submit">Submit</Button>
+            <p className={styles.additionalInfo}>Don’t have an account? <Link className={styles.additionalInfoLink} to={"/sign-up"}>Sign up now!</Link></p>
+            <Button disabled={isLoading} type="submit" variant="submit">Submit</Button>
             {rootError && <p className={styles.error}>{rootError.message}</p>}
         </form>
         <div className={styles.imgContainer} >

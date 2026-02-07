@@ -1,10 +1,12 @@
 import { SearchBar } from '../../components'
+import { useUserContext } from '../../context'
 import { ICONS, IMAGES } from '../../shared'
 import styles from './header.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 
 export function Header() {
     const navigate = useNavigate()
+    const {user} = useUserContext()
 
     return <header>
         <Link to={"/"} className={styles[`logo-block`]}>
@@ -24,9 +26,9 @@ export function Header() {
                 Cart
             </Link>
         </div>
-        <div className={styles.profileBlock}>
-            <p>Username</p>
-            <img src={IMAGES.defaultAvatar} alt="avatar" />
-        </div>
+        {user ? <div className={styles.profileBlock}>
+            <p>{user.username}</p>
+            <img src={user.avatar ? user.avatar : IMAGES.defaultAvatar} alt="avatar" />
+        </div> : <Link to={"/sign-up"}>Sign Up</Link>}
     </header>
 }
